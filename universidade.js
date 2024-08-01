@@ -26,16 +26,20 @@ function createFaculdade() {
         localizacao: localizacao,
         cursos: [] 
     };
+
+    // adicionando a faculdade ao array
     universidade.push(faculdade);
     console.log('faculdade cadastrada!');
 }
 
 function readFaculdade() {
+    // se o array estiver vazio, retorne isso
     if (universidade.length === 0) {
         console.log('nenhuma faculdade cadastrada.');
         return;
     }
 
+    // lista as faculdades
     universidade.forEach((faculdade, index) => {
         console.log(`${index + 1}. universidade: ${faculdade.nome} - localizacao: ${faculdade.localizacao}`);
     });
@@ -46,6 +50,7 @@ function deleteFaculdade() {
     let index = universidade.findIndex(faculdade => faculdade.nome === nome);
 
     if (index !== -1) {
+        // exclui a faculdade
         universidade.splice(index, 1);
         console.log('faculdade excluída com sucesso!');
     } else {
@@ -61,6 +66,7 @@ function updateFaculdade() {
         let novoNome = readline.question('insira o novo nome da faculdade: ');
         let novaLocalizacao = readline.question('insira a nova localizacao da faculdade: ');
 
+        // substitui o nome antigo para o novo nome
         universidade[index].nome = novoNome;
         universidade[index].localizacao = novaLocalizacao;
 
@@ -70,6 +76,7 @@ function updateFaculdade() {
     }
 }
 
+// segundo menu
 function menu2(faculdadeSelecionada) {
     console.log(`=== menu da ${faculdadeSelecionada.nome} ===`);
     console.log('1 - inserir curso na universidade');
